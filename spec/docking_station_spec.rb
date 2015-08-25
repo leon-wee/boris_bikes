@@ -11,6 +11,11 @@ describe DockingStation do
     it 'responds to release bike' do
       expect(subject).to respond_to(:release_bike)
     end
+
+    it 'from the bikes array' do
+      subject.dock(bike)
+      expect(subject.release_bike).to eq(bike)
+    end
   end
 
   context '#Dock bikes' do
