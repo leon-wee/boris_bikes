@@ -16,6 +16,10 @@ describe DockingStation do
       subject.dock(bike)
       expect(subject.release_bike).to eq(bike)
     end
+
+    it 'fails when the bikes array is empty' do
+      expect{ subject.release_bike }.to raise_error('No bikes available')
+    end
   end
 
   context '#Dock bikes' do
