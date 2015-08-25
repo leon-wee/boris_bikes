@@ -5,8 +5,9 @@ describe DockingStation do
     expect(subject.bikes).to eq([])
   end
 
-
-  it 'responds to release bike' do
-    expect(subject).to respond_to(:release_bike)
+  context '#Releases bike' do
+    it 'responds to release bike' do
+      expect(subject).to respond_to(:release_bike)
+    end
   end
 end
