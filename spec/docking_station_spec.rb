@@ -8,6 +8,10 @@ describe DockingStation do
     it 'an empty bikes array' do
       expect(subject.bikes).to eq([])
     end
+
+    it 'capacity that can be changed' do
+      expect(subject).to respond_to(:capacity=)
+    end
   end
 
   context '#Releases bike' do
