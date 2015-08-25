@@ -1,6 +1,6 @@
 class DockingStation
 
-  DEFAULT_CAPACITY = 1
+  DEFAULT_CAPACITY = 20
 
   attr_reader :bikes, :capacity
 
@@ -10,6 +10,7 @@ class DockingStation
   end
 
   def dock(bike)
+    fail 'Docking station is full' if bikes.count >= DEFAULT_CAPACITY
     bikes << bike
   end
 
