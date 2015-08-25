@@ -2,14 +2,11 @@ require 'docking_station'
 
 describe DockingStation do
   let(:bike) { double :bike }
+  subject { described_class.new(10) }
 
   context '#Initialized docking station contains' do
     it 'an empty bikes array' do
       expect(subject.bikes).to eq([])
-    end
-
-    it 'a default capacity' do
-      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
   end
 
@@ -35,7 +32,7 @@ describe DockingStation do
     end
 
     it 'should fail it if exceeds docking capacity' do
-      20.times { subject.dock(bike) }
+      10.times { subject.dock(bike) }
       expect{ subject.dock(bike) }.to raise_error('Docking station is full')
     end
   end
