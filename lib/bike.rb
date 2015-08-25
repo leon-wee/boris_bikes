@@ -7,7 +7,7 @@ class Bike
   end
 
   def working?
-    true
+    @status == true
   end
 
   def broken?
