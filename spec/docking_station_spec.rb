@@ -3,8 +3,14 @@ require 'docking_station'
 describe DockingStation do
   let(:bike) { double :bike }
 
-  it '#Initializes with an empty bikes array' do
-    expect(subject.bikes).to eq([])
+  context '#Initialized docking station contains' do
+    it 'an empty bikes array' do
+      expect(subject.bikes).to eq([])
+    end
+
+    it 'a default capacity' do
+      expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
+    end
   end
 
   context '#Releases bike' do
