@@ -6,16 +6,16 @@ class Bike
     @status = true
   end
 
+  def report_broken
+    @status = false
+  end
+
   def working?
-    @status == true
+    status == true
   end
 
   def broken?
-    @status == false
-  end
-
-  def report_broken
-    @status = false
+    status == false
   end
 
 end
