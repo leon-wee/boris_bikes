@@ -5,8 +5,7 @@ require_relative 'bike_container'
 class Garage
   include BikeContainer
 
-  # def collects_broken_bikes
-  #   van.bike
-  # end
-
+  def fix_bikes
+    bikes.map { |bike| bike.fix }
+  end
 end

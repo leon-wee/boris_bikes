@@ -10,6 +10,10 @@ class Bike
     @status = false
   end
 
+  def fix
+    @status = true
+  end
+
   def working?
     status == true
   end

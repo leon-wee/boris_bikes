@@ -31,6 +31,5 @@ describe Van do
     end
   end
 
-
   it_behaves_like BikeContainer
 end

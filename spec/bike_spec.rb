@@ -14,6 +14,12 @@ describe Bike do
       expect(subject.status).to eq(false)
     end
 
+    it 'can fix broken bikes' do
+      subject.report_broken
+      subject.fix
+      expect(subject.status).to eq(true)
+    end
+
     context 'when bike is broken' do
       it 'check working returns false' do
         subject.report_broken

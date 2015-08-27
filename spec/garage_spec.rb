@@ -2,16 +2,16 @@ require 'van'
 
 describe Garage do
   # let(:van) { double(:van) }
-  # let(:bike) { double(:bike) }
+  let(:broken_bike) { double(:bike) }
 
-  # context '#Collects broken bikes' do
-  #   it 'stores vans broken bikes into garage' do
-  #     allow(bike).to receive(:broken?) { true }
-  #     allow(van).to receive(:load_broken_bike).with(bike)
-  #     subject.collects_broken_bikes
-  #     expect(garage.bikes).to eq([bike])
-  #   end
-  # end
+  context '#Collects broken bikes' do
+    it 'fixes broken bikes' do
+      allow(broken_bike).to receive(:broken?) { true }
+      subject.add_bike(broken_bike)
+      expect(broken_bike).to receive(:fix)
+      subject.fix_bikes
+    end
+  end
 
   it_behaves_like BikeContainer
 end
