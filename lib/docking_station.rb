@@ -5,6 +5,7 @@ class DockingStation
   include BikeContainer
 
   def dock(bike)
+    fail 'Please only dock bikes' unless bike.respond_to?(:broken?)
     add_bike(bike)
   end
 
