@@ -3,6 +3,7 @@ require 'van'
 describe Van do
   let(:broken_bike) { double(:bike) }
   let(:garage) { double(:garage) }
+  let(:docking_station) { double(:docking_station) }
 
   context '#Loads bikes' do
     it 'will store broken bikes in van to deliver to garage' do
@@ -51,6 +52,23 @@ describe Van do
       allow(garage).to receive(:emptied)
       subject.collects_fixed_bikes_from(garage)
       expect(subject.bikes).to eq([working_bike])
+    end
+  end
+
+  context '#Distribute fixed bikes to docking station' do
+    it 'delivers fixed bikes to the docking station' do
+      fixed_bike = double(:bike)
+      allow(docking_station).to receive(:bikes) { [] }
+      expect(subject.bikes).to receive(:each).and_yield(fixed_bike)
+      subject.deliver_fixed_bikes_to(docking_station)
+    end
+
+    it 'van container should be empty' do
+      fixed_bike = double(:bike)
+      subject.add_bike(fixed_bike)
+      allow(docking_station).to receive(:bikes) { [] }
+      subject.deliver_fixed_bikes_to(docking_station)
+      expect(subject.bikes.length).to eq(0)
     end
   end
 

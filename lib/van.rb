@@ -20,4 +20,9 @@ class Van
     garage.emptied
   end
 
+  def deliver_fixed_bikes_to(docking_station)
+    bikes.each { |fixed_bike| docking_station.bikes << fixed_bike }
+    bikes.count.times { remove_bike }
+  end
+
 end
