@@ -10,9 +10,13 @@ class Van
     add_bike(broken_bike)
   end
 
-  def deliver_bikes_to(garage)
+  def deliver_broken_bikes_to(garage)
     bikes.each { |bike| garage.bikes << bike }
-    bikes = []
+    bikes.count.times { remove_bike }
+  end
+
+  def collects_fixed_bikes_from(garage)
+    garage.emptied
   end
 
 end

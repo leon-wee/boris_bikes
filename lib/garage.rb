@@ -8,4 +8,9 @@ class Garage
   def fix_bikes
     bikes.map { |bike| bike.fix }
   end
+
+  def emptied
+    bikes.count.times { remove_bike }
+  end
+
 end

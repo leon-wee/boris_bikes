@@ -20,14 +20,24 @@ describe Van do
 
   context '#Unload bikes' do
     it 'van bike capacity should be empty' do
-      subject.deliver_bikes_to(garage)
-      expect(subject.bikes).to eq([])
+      allow(broken_bike).to receive(:broken?) { true }
+      subject.load(broken_bike)
+      allow(garage).to receive(:bikes) { [] }
+      subject.deliver_broken_bikes_to(garage)
+      expect(subject.bikes.length).to eq(0)
     end
 
     it 'garage container should contain broken bikes' do
       allow(garage).to receive(:bikes) { [] }
       expect(subject.bikes).to receive(:each).and_yield(broken_bike)
-      subject.deliver_bikes_to(garage)
+      subject.deliver_broken_bikes_to(garage)
+    end
+  end
+
+  context '#Collects fixed bikes from garage' do
+    it 'empties garage bikes' do
+      expect(garage).to receive(:emptied)
+      subject.collects_fixed_bikes_from(garage)
     end
   end
 

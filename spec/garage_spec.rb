@@ -13,5 +13,15 @@ describe Garage do
     end
   end
 
+  context '#Emptied' do
+    it 'empties the garage container' do
+      subject.add_bike(broken_bike)
+      allow(broken_bike).to receive(:fix)
+      subject.fix_bikes
+      subject.emptied
+      expect(subject.bikes.length).to eq(0)
+    end
+  end
+
   it_behaves_like BikeContainer
 end
