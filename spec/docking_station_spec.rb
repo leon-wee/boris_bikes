@@ -2,7 +2,7 @@ require 'docking_station'
 require 'support/shared_examples_for_bike_container'
 
 describe DockingStation do
-  let(:bike) { double :bike }
+  let(:bike) { double(:bike) }
   subject { described_class.new(20) }
 
   context '#Initialized docking station contains' do

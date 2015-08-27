@@ -10,9 +10,10 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if working_bikes.empty?
-    bikes.delete working_bikes.pop
+    bikes.delete(working_bikes.pop)
   end
 
+  private
 
   def working_bikes
     bikes.reject { |bike| bike.broken? }
