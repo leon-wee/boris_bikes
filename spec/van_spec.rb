@@ -36,8 +36,21 @@ describe Van do
 
   context '#Collects fixed bikes from garage' do
     it 'empties garage bikes' do
+      working_bike = double(:bike)
+      allow(garage).to receive(:bikes) { [working_bike] }
+      allow(garage.bikes).to receive(:each)
       expect(garage).to receive(:emptied)
       subject.collects_fixed_bikes_from(garage)
+    end
+
+    it 'stores fixed bikes in van' do
+      working_bike = double(:bike)
+      allow(garage).to receive(:add_bike).with(working_bike) { [working_bike] }
+      allow(garage).to receive(:bikes) { [working_bike] }
+      allow(garage.bikes).to receive(:each).and_yield(working_bike)
+      allow(garage).to receive(:emptied)
+      subject.collects_fixed_bikes_from(garage)
+      expect(subject.bikes).to eq([working_bike])
     end
   end
 

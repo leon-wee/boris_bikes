@@ -16,6 +16,7 @@ class Van
   end
 
   def collects_fixed_bikes_from(garage)
+    garage.bikes.each { |bike| bikes << bike }
     garage.emptied
   end
 
