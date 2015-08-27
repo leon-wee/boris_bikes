@@ -22,6 +22,7 @@ describe DockingStation do
 
     it 'from the bikes array' do
       subject.dock(bike)
+      allow(bike).to receive(:broken?)
       expect(subject.release_bike).to eq(bike)
     end
 
@@ -38,9 +39,10 @@ describe DockingStation do
 
     it 'should fail it if exceeds docking capacity' do
       20.times { subject.dock(bike) }
-      expect{ subject.dock(bike) }.to raise_error('Docking station is full')
+      expect{ subject.dock(bike) }.to raise_error('DockingStation is full')
     end
   end
+
 
   it_behaves_like BikeContainer
 end
