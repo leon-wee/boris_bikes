@@ -5,13 +5,13 @@ require_relative 'bike_container'
 class Van
   include BikeContainer
 
-  def load_broken_bike(bike)
-    fail 'Please load a broken bike' unless bike.broken?
-    add_bike(bike)
+  def load(broken_bike)
+    fail 'Sorry, we only deliver broken bikes' unless broken_bike.broken?
+    add_bike(broken_bike)
   end
 
-  def deliver_broken_bikes(garage)
-    garage.collects_broken_bikes
+  def deliver_bikes_to(garage)
+    bikes.each { |bike| garage.bikes << bike }
     bikes = []
   end
 
