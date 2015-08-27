@@ -1,8 +1,9 @@
 require 'docking_station'
+require 'support/shared_examples_for_bike_container'
 
 describe DockingStation do
   let(:bike) { double :bike }
-  subject { described_class.new(10) }
+  subject { described_class.new(20) }
 
   context '#Initialized docking station contains' do
     it 'an empty bikes array' do
@@ -36,8 +37,10 @@ describe DockingStation do
     end
 
     it 'should fail it if exceeds docking capacity' do
-      10.times { subject.dock(bike) }
+      20.times { subject.dock(bike) }
       expect{ subject.dock(bike) }.to raise_error('Docking station is full')
     end
   end
+
+  it_behaves_like BikeContainer
 end
